@@ -1,0 +1,6 @@
+{
+  "name": "SkySah Accounting — Agency Ledger",
+  "description": "Cloud-synced digital marketing agency accounting software with invoicing, recurring billing, client profitability, expense tracking, and financial statements.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

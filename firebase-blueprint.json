@@ -1,0 +1,51 @@
+{
+  "entities": {
+    "LedgerWorkspace": {
+      "title": "LedgerWorkspace",
+      "description": "Complete accounting ledger workspace document owned by a specific authenticated user",
+      "type": "object",
+      "properties": {
+        "ownerId": {
+          "type": "string",
+          "description": "The UID of the user who owns this ledger workspace",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerEmail": {
+          "type": "string",
+          "description": "Email address of the workspace owner",
+          "minLength": 3,
+          "maxLength": 256
+        },
+        "payload": {
+          "type": "string",
+          "description": "Serialized accounting ledger state",
+          "minLength": 2,
+          "maxLength": 950000
+        },
+        "version": {
+          "type": "number",
+          "description": "Schema version of the ledger workspace"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of workspace creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last workspace update"
+        }
+      },
+      "required": ["ownerId", "ownerEmail", "payload", "version", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/ledgers/{userId}": {
+      "schema": { "$ref": "#/entities/LedgerWorkspace" },
+      "description": "Per-user private accounting ledger workspace"
+    }
+  }
+}
